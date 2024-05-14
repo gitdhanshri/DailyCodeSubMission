@@ -421,15 +421,11 @@ class LibraryManagementSystem {
 	BasicInputOperations p1=new BasicInputOperations();
 	inputRequireForDifferentMethod inp=new inputRequireForDifferentMethod();
 		//1.String choice="ReturnBook";
-		String choice="IssueBookByStudent";
-		//inp.inputForBook();
-		//b1.displayInfo();		
-		//inp.inputForStudent();
-		//s1.displayInfo();
-	        //Ls.isBookIssued(s1,p1, b1,f1);	
+		//String choice="IssueBookByStudent";
+			
 		//String choice="IssueBookByfaculty";
 		//String choice="IsAvailableBook";
-		switch (choice){
+		/*switch (choice){
 			case "IssueBookByStudent":
 				TOfB.bookIssueByStudent();
 				break;
@@ -444,12 +440,18 @@ class LibraryManagementSystem {
 				break;
 			default:
 				System.out.println("Invalid choice");		
-		}
+		}*/
         
 		System.out.println(b1.isValidBooK("DSD"));
 		System.out.println(b1.isAvaiableBook("DSD"));
-		System.out.println(b1.isAvaiableBook(b1.name));	
+System.out.println("is Available -->"+b1.isAvaiableBook(b1.name));	
 		System.out.println("Book Name->"+b1.name);
+		
+		inp.inputForBook();
+		b1.displayInfo();		
+		//inp.inputForStudent();
+		//s1.displayInfo();
+	        Ls.isBookIssued(s1,p1, b1,f1);
         //sc.close();
     }
 }

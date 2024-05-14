@@ -5,7 +5,6 @@ interface college{
 	void show();
 	public abstract void config();
 }
-
 class first implements college{
 	public void show(){
 		System.out.println("Inside Class first:Inside Show Method ");
