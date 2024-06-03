@@ -1,0 +1,161 @@
+class LinkList{
+	public static class Node{
+		int data;
+		Node next;
+		public Node(int data){
+			this.data=data;
+			this.next=null;
+		}
+	}
+	public static Node head;
+	public static Node tail;
+	public static int size;
+	
+	void addAtFirst(int data){
+		Node newNode=new Node(data);
+		size++;
+		if(head==null){
+			head=newNode;
+			return;
+		}
+		//Node temp=head;
+		newNode.next=head;
+		head=newNode;
+	}
+	void addAtLast(int data){
+		Node newNode=new Node(data);
+		size++;
+		if(head==null){
+			head=tail=newNode;
+			return;
+		}
+		Node temp=head;
+		while(temp.next!=null){
+			temp=temp.next;
+		}
+		temp.next=newNode;
+		newNode.next=null;
+	}
+	void addInBetween2Nodes(int index,int data){
+		if(index==0){
+			addAtFirst(12);
+			return;
+		}
+		Node newNode=new Node(data);
+		size++;
+		if(head==null){
+			head=tail=newNode;
+			return;
+		}
+		Node temp=head;
+		int i=0;
+		while(i<(index-1)){
+			temp=temp.next;
+			i++;
+		}
+		newNode.next=temp.next;
+		temp.next=newNode;
+	}
+	void printLinkedList(){
+		System.out.print("\nRequired LL-->");
+		if(size==0){
+			System.out.println("  length of LL  Zero");
+			return;
+		}
+		Node temp=head;
+		if(head==null){
+			System.out.print("\n Empty LinkList.....");
+			return;
+		}
+		while(temp!=null){
+			System.out.print(temp.data+"  ");
+			temp=temp.next;
+		}
+	
+		
+	}
+	void removeFromFirst(){
+		if(head==null){
+			System.out.print("\n Empty LinkList.....");
+			return;
+		}
+		Node temp=head;
+		head=temp.next;
+		size--;
+	}
+	void removeFromLast(){
+		if(size<1){
+			System.out.println("No More LL Available..");
+			return;
+		}
+		if(head==null){
+			System.out.print("\n Empty LinkList.....");
+			return;
+		}
+		Node temp=head;
+		/*if(temp.next==null){
+			removeFromFirst();
+			return;
+		}*/
+		int i=0;
+		while(i<(size-2)){
+			temp=temp.next;
+			i++;
+		}
+		temp.next=null;
+		tail=temp.next;
+		size--;
+	}
+	void removeInBetweenNodes(int index){
+		if(size<3){
+			System.out.println("No More LL Available..");
+			return;
+		}
+		if(index==1){
+			removeFromFirst();
+			return;
+		}
+		if(head==null){
+			System.out.print("\n Empty LinkList.....");
+			return;
+		}
+		Node temp=head;
+		Node tempNext=temp.next;
+		int i=0;
+		while(i<(index-2)){
+			temp=temp.next;
+			tempNext=tempNext.next;
+			i++;
+		}
+		temp.next=tempNext.next;
+		size--;
+	}
+	public static void main(String args[]){
+		LinkList obj1=new LinkList();
+		//obj1.printLinkedList();
+		obj1.addAtFirst(11);
+		obj1.addAtFirst(10);
+		obj1.addAtFirst(9);
+		obj1.addAtFirst(8);
+		obj1.addAtLast(12);
+		obj1.addAtLast(13);
+		obj1.printLinkedList();
+		System.out.print("\nSize-->"+size);
+		//obj1.addInBetween2Nodes(2,13);
+		obj1.removeInBetweenNodes(5);
+		obj1.printLinkedList();
+		System.out.print("\nSize-->"+size);
+		
+		/*obj1.removeInBetweenNodes(2);
+		obj1.printLinkedList();
+		System.out.print("\nSize-->"+size);
+		
+		obj1.removeInBetweenNodes(1);
+		obj1.printLinkedList();
+		System.out.print("\nSize-->"+size);
+		
+		obj1.removeInBetweenNodes(1);
+		obj1.printLinkedList();
+		System.out.print("\nSize-->"+size);*/	
+	}
+}
